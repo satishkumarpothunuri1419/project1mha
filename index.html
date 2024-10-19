@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - JP Soft Sol</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"], input[type="password"], input[type="date"], input[type="time"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff7e5f;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #feb47b;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .notification {
+            display: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JP Soft Sol Attendance</h1>
+        <form id="attendanceForm" action="#" method="post" onsubmit="showNotification(event)">
+            <input type="text" name="employee_id" placeholder="Employee ID" required>
+            <input type="text" name="employee_name" placeholder="Employee Name" required>
+            <input type="date" name="date" required>
+            <input type="time" name="check_in" required>
+            <input type="time" name="check_out" required>
+            <input type="submit" value="Submit Attendance">
+        </form>
+        <div class="footer">
+            &copy; 2024 JP Soft Sol. All rights reserved.
+        </div>
+    </div>
+    <div id="notification" class="notification">
+        Attendance marked successfully!
+    </div>
+
+    <script>
+        function showNotification(event) {
+            event.preventDefault();
+            var notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+                document.getElementById('attendanceForm').reset();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
